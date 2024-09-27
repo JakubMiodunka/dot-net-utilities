@@ -1,0 +1,6 @@
+# Visual Studio cache directory.
+src/.vs/
+
+# Directories used during application build.
+src/DotNetUtilities/bin/
+src/DotNetUtilities/obj/

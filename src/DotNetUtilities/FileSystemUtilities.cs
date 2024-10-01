@@ -38,7 +38,7 @@ namespace DotNetUtilities
             {
                 string argumentName = nameof(path);
                 string errorMessage = $"Provided path is invalid: {path}";
-                throw new ArgumentException(argumentName, errorMessage);
+                throw new ArgumentException(errorMessage, argumentName);
             }
 
             if (shallExist)
@@ -93,7 +93,7 @@ namespace DotNetUtilities
             {
                 string argumentName = nameof(path);
                 string errorMessage = $"Provided path is invalid: {path}";
-                throw new ArgumentException(argumentName, errorMessage);
+                throw new ArgumentException(errorMessage, argumentName);
             }
 
             if (validExtensions is null)
@@ -107,7 +107,7 @@ namespace DotNetUtilities
             {
                 string argumentName = nameof(path);
                 const string ErrorMessage = "Provided extensions collection contains invalid extension:";
-                throw new ArgumentException(argumentName, ErrorMessage);
+                throw new ArgumentException(ErrorMessage, argumentName);
             }
 
             string actualExtension = Path.GetExtension(path);
@@ -168,7 +168,7 @@ namespace DotNetUtilities
             {
                 string argumentName = nameof(path);
                 string errorMessage = $"Provided file path is invalid: {path}";
-                throw new ArgumentException(argumentName, errorMessage);
+                throw new ArgumentException(errorMessage, argumentName);
             }
 
             if (shallExist)

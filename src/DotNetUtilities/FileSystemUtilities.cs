@@ -68,6 +68,79 @@ namespace DotNetUtilities
         }
 
         /// <summary>
+        /// Creates a copy of specified directory and saves it under new location within file system.
+        /// </summary>
+        /// <remarks href="https://learn.microsoft.com/en-us/dotnet/standard/io/how-to-copy-directories">
+        /// Method was prepared according to MSDN documentation related to this topic.
+        /// </remarks>
+        /// <param name="sourcePath">
+        /// Path to directory, which shall be copied.
+        /// </param>
+        /// <param name="targetPath">
+        /// Path, under which copy of specified directory shall be saved.
+        /// </param>
+        public static void CopyDirectory(string sourcePath, string targetPath)
+        {
+            #region Arguments validation
+            ValidateDirectory(sourcePath);
+            ValidateDirectory(targetPath, false);
+            #endregion
+
+            Directory.CreateDirectory(targetPath);
+
+            foreach(string filePath in Directory.EnumerateFiles(sourcePath))
+            {
+                string fileName = Path.GetFileName(filePath);
+                string copiedFilePath = Path.Combine(targetPath, fileName);
+
+                File.Copy(filePath, copiedFilePath);
+            }
+
+            foreach (string directoryPath in Directory.EnumerateDirectories(sourcePath))
+            {
+                string directoryName = Path.GetFileName(directoryPath);
+                string copiedDirectoryPath = Path.Combine(targetPath, directoryName);
+
+                CopyDirectory(directoryPath, copiedDirectoryPath);
+            }
+        }
+
+        /// <summary>
+        /// Moves specified directory to a new location within file system.
+        /// </summary>
+        /// <param name="sourcePath">
+        /// Path to directory, which shall be moved.
+        /// </param>
+        /// <param name="targetPath">
+        /// Path, to which specified directory shall be moved.
+        /// </param>
+        public static void MoveDirectory(string sourcePath, string targetPath)
+        {
+            CopyDirectory(sourcePath, targetPath);
+
+            Directory.Delete(sourcePath, true);
+        }
+
+        /// <summary>
+        /// Deletes content of specified directory.
+        /// </summary>
+        /// <param name="path">
+        /// Path to directory, which content shall be deleted.
+        /// </param>
+        public static void CleanDirectory(string path)
+        {
+            ValidateDirectory(path);
+
+            Directory.EnumerateFiles(path)
+                .ToList()
+                .ForEach(File.Delete);
+
+            Directory.EnumerateDirectories(path)
+                .ToList()
+                .ForEach(directoryPath => Directory.Delete(directoryPath, true));
+        }
+
+        /// <summary>
         /// Checks if extension of specified file system entry is equal to expected one.
         /// If validation condition would not be fulfilled, according exception will be thrown.
         /// </summary>

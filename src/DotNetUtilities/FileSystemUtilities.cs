@@ -34,12 +34,14 @@ namespace DotNetUtilities
         /// </exception>
         public static void ValidateDirectory(string path, bool shallExist = true)
         {
+            #region Arguments validation
             if (string.IsNullOrWhiteSpace(path))
             {
                 string argumentName = nameof(path);
                 string errorMessage = $"Provided path is invalid: {path}";
                 throw new ArgumentException(errorMessage, argumentName);
             }
+            #endregion
 
             if (shallExist)
             {
@@ -129,7 +131,9 @@ namespace DotNetUtilities
         /// </param>
         public static void CleanDirectory(string path)
         {
+            #region Arguments validation
             ValidateDirectory(path);
+            #endregion
 
             Directory.EnumerateFiles(path)
                 .ToList()
@@ -162,12 +166,14 @@ namespace DotNetUtilities
         /// </exception>
         public static void ValidateExtension(string path, IEnumerable<string> validExtensions)
         {
+            #region Arguments validation
             if (string.IsNullOrWhiteSpace(path))
             {
                 string argumentName = nameof(path);
                 string errorMessage = $"Provided path is invalid: {path}";
                 throw new ArgumentException(errorMessage, argumentName);
             }
+            #endregion
 
             if (validExtensions is null)
             {
@@ -237,12 +243,14 @@ namespace DotNetUtilities
         /// </exception>
         public static void ValidateFile(string path, bool shallExist = true)
         {
+            #region Arguments validation
             if (string.IsNullOrWhiteSpace(path))
             {
                 string argumentName = nameof(path);
                 string errorMessage = $"Provided file path is invalid: {path}";
                 throw new ArgumentException(errorMessage, argumentName);
             }
+            #endregion
 
             if (shallExist)
             {

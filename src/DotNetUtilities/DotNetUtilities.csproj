@@ -41,6 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DiagnosticsUtilities.cs" />
+    <Compile Include="ProgressBar.cs" />
     <Compile Include="XmlUtilities.cs" />
     <Compile Include="FileSystemUtilities.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

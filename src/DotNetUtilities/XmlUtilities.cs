@@ -27,12 +27,14 @@ namespace DotNetUtilities
         /// </exception>
         public static bool IsMatchingToSchema(XDocument xmlDocument, string schemaPath)
         {
+            #region Arguments validation
             if (xmlDocument is null)
             {
                 string argumentName = nameof(xmlDocument);
                 const string ErrorMessage = "Provided XML document is a null reference:";
                 throw new ArgumentNullException(argumentName, ErrorMessage);
             }
+            #endregion
 
             FileSystemUtilities.ValidateFile(schemaPath, ".xsd");
 
@@ -59,7 +61,9 @@ namespace DotNetUtilities
         /// </returns>
         public static bool IsMatchingToSchema(string filePath, string schemaPath)
         {
+            #region Arguments validation
             FileSystemUtilities.ValidateFile(filePath, ".xml");
+            #endregion
 
             var xmlDocument = XDocument.Load(filePath);
 

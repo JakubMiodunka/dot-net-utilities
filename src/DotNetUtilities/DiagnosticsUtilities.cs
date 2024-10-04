@@ -15,9 +15,6 @@ namespace DotNetUtilities
         /// <param name="exception">
         /// Exception, which representation shall be generated.
         /// </param>
-        /// <param name="elementName">
-        /// Desired name of generated XML element.
-        /// </param>
         /// <returns>
         /// XML-based representation of provided exception.
         /// </returns>
@@ -27,7 +24,31 @@ namespace DotNetUtilities
         /// <exception cref="ArgumentException">
         /// Thrown, when at least one argument will be considered as invalid.
         /// </exception>
-        public static XElement AsXmlElement(Exception exception, string elementName = "Exception")
+        /// <example>
+        /// Generated XML element matches the 'Exception' complex type
+        /// defined in belows XML schema.
+        /// <code>
+        /// <xs:complexType name="ExceptionSource">
+        ///     <xs:attribute name = "Application" type="xs:string" use="required"/>
+        ///     <xs:attribute name = "Method" type="xs:string" use="required"/>
+        ///     <xs:attribute name = "StackTrace" type="xs:string" use="required"/>
+        /// </xs:complexType>
+        /// <xs:complexType name="Exception">
+        ///     <xs:sequence>
+        ///         <xs:element name = "Message" type="Message"/>
+        ///         <xs:element name = "Source" type="ExceptionSource"/>
+        ///         <xs:element name = "InnerException" type="InnerException"/>
+        ///     </xs:sequence>
+        ///     <xs:attribute name = "Type" type="xs:string" use="required"/>
+        /// </xs:complexType>
+        /// <xs:complexType name="InnerException">
+        ///     <xs:sequence>
+        ///         <xs:element name = "Exception" type="Exception" minOccurs="0"/>
+        ///     </xs:sequence>
+        /// </xs:complexType>
+        /// </code>
+        /// </example>
+        public static XElement AsXmlElement(Exception exception)
         {
             #region Arguments validation
             if (exception is null)
@@ -36,18 +57,11 @@ namespace DotNetUtilities
                 const string ErrorMessage = "Provided exception is a null reference:";
                 throw new ArgumentNullException(argumentName, ErrorMessage);
             }
-
-            if (string.IsNullOrWhiteSpace(elementName))
-            {
-                string argumentName = nameof(exception);
-                string errorMessage = $"Provided element name is invalid: {elementName}";
-                throw new ArgumentException(errorMessage, argumentName);
-            }
             #endregion
 
             string exceptionType = exception.GetType().FullName;
 
-            var exceptionElement = new XElement(elementName,
+            var exceptionElement = new XElement("Exception",
                 new XAttribute("Type", exceptionType));
 
             var messageElement = new XElement("Message",
@@ -74,7 +88,8 @@ namespace DotNetUtilities
             }
             else
             {
-                innerExceptionElement = AsXmlElement(exception.InnerException, "InnerException");
+                innerExceptionElement = new XElement("InnerException",
+                    AsXmlElement(exception.InnerException));
             }
 
             exceptionElement.Add(innerExceptionElement);

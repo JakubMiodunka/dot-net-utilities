@@ -14,6 +14,13 @@ namespace DotNetUtilities
     ///     Progress bar prints its visual representation to std-out, so it is not recommended to perform
     ///     other operations during is runtime using std-out
     ///     directly - to print some values on std-out please use ProgressBar.WriteLine method.
+    /// Comments:
+    ///     Usage of Unicode characters U+2588, U+2589, U+258A, U+258B, U+258C, U+258D,
+    ///     U+258E and U+258F (partially filled blocks) was taken into consideration to make
+    ///     the progress bar more accurate and smooth, but it occurs that those symbols are
+    ///     not supported by Windows CLI.Additionally after some trials I came to the conclusion,
+    ///     that this solution would make the progress bar implementation
+    ///     too complicated for what it is (overengineered) and gave up further development.
     /// </remarks>
     /// <example>
     /// Simple example of tracker usage.

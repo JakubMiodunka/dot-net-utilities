@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['runtimebegin_0',['RuntimeBegin',['../class_dot_net_utilities_1_1_progress_bar.html#a88cf395a828f2ddc507df597e61d5ae6',1,'DotNetUtilities::ProgressBar']]]
+  ['originalculture_0',['OriginalCulture',['../class_dot_net_utilities_1_1_culture_context.html#a0c8b590a5aec7c36687ea776a9ee990f',1,'DotNetUtilities::CultureContext']]]
 ];

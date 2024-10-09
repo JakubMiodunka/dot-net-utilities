@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['diagnosticsutilities_0',['DiagnosticsUtilities',['../class_dot_net_utilities_1_1_diagnostics_utilities.html',1,'DotNetUtilities']]]
+  ['culturecontext_0',['CultureContext',['../class_dot_net_utilities_1_1_culture_context.html',1,'DotNetUtilities']]]
 ];

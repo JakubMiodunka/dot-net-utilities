@@ -28,6 +28,7 @@ built library to Your project directly.
 
 ## Functionalities
 
+* *CultureContext* - Temporary change of culture used by the thread.
 * *DiagnosticsUtilities* - General diagnostics and error reporting.
 * *FileSystemUtilities* - Basic operations within machine filesystem,
 such as basic files/directories validation, coping/moving directories etc.

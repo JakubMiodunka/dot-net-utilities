@@ -1,8 +1,4 @@
 var searchData=
 [
-  ['validatedirectory_0',['ValidateDirectory',['../class_dot_net_utilities_1_1_file_system_utilities.html#ad972d05f7559ae4fced5675878d9dbb7',1,'DotNetUtilities::FileSystemUtilities']]],
-  ['validateextension_1',['ValidateExtension',['../class_dot_net_utilities_1_1_file_system_utilities.html#ad0548d2fb5b46d4db1802a65ae582835',1,'DotNetUtilities.FileSystemUtilities.ValidateExtension(string path, IEnumerable&lt; string &gt; validExtensions)'],['../class_dot_net_utilities_1_1_file_system_utilities.html#a4f9641ff5c9975a32e304ba34c56bbc6',1,'DotNetUtilities.FileSystemUtilities.ValidateExtension(string path, string validExtension)']]],
-  ['validatefile_2',['ValidateFile',['../class_dot_net_utilities_1_1_file_system_utilities.html#afb5d277fdf8d2e4604b177e117d915b8',1,'DotNetUtilities.FileSystemUtilities.ValidateFile(string path, bool shallExist=true)'],['../class_dot_net_utilities_1_1_file_system_utilities.html#a7814ca6d12425282e57a340b0212c710',1,'DotNetUtilities.FileSystemUtilities.ValidateFile(string path, IEnumerable&lt; string &gt; validExtensions, bool shallExist=true)'],['../class_dot_net_utilities_1_1_file_system_utilities.html#a39d599a90adfc07102d69e6ee71e374f',1,'DotNetUtilities.FileSystemUtilities.ValidateFile(string path, string validExtension, bool shallExist=true)']]],
-  ['validatexmldocument_3',['ValidateXmlDocument',['../class_dot_net_utilities_1_1_xml_utilities.html#a5d46840c469401e00399d15b86105268',1,'DotNetUtilities::XmlUtilities']]],
-  ['validatexmlfile_4',['ValidateXmlFile',['../class_dot_net_utilities_1_1_xml_utilities.html#aa18b87405e51f8ee36255d0f5637b86c',1,'DotNetUtilities::XmlUtilities']]]
+  ['runtimebegin_0',['RuntimeBegin',['../class_dot_net_utilities_1_1_progress_bar.html#a88cf395a828f2ddc507df597e61d5ae6',1,'DotNetUtilities::ProgressBar']]]
 ];

@@ -20,7 +20,7 @@ namespace DotNetUtilities
     ///     the progress bar more accurate and smooth, but it occurs that those symbols are
     ///     not supported by Windows CLI.Additionally after some trials I came to the conclusion,
     ///     that this solution would make the progress bar implementation
-    ///     too complicated for what it is (overengineered) and gave up further development.
+    ///     too complicated for what it is (over-engineered) and gave up further development.
     /// </remarks>
     /// <example>
     /// Simple example of tracker usage.

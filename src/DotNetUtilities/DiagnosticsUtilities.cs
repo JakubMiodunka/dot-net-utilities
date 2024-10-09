@@ -9,6 +9,7 @@ namespace DotNetUtilities
     /// </summary>
     public static class DiagnosticsUtilities
     {
+        #region Utilities
         /// <summary>
         /// Generates XML-based representation of provided exception.
         /// </summary>
@@ -96,5 +97,6 @@ namespace DotNetUtilities
 
             return exceptionElement;
         }
+        #endregion
     }
 }

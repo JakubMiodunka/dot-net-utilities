@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['diagnosticsutilities_2ecs_0',['DiagnosticsUtilities.cs',['../_diagnostics_utilities_8cs.html',1,'']]]
+  ['culturecontext_2ecs_0',['CultureContext.cs',['../_culture_context_8cs.html',1,'']]]
 ];

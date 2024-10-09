@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['filesystemutilities_0',['FileSystemUtilities',['../class_dot_net_utilities_1_1_file_system_utilities.html',1,'DotNetUtilities']]]
+  ['diagnosticsutilities_0',['DiagnosticsUtilities',['../class_dot_net_utilities_1_1_diagnostics_utilities.html',1,'DotNetUtilities']]]
 ];

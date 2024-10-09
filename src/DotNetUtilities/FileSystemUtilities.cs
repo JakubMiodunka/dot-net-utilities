@@ -11,6 +11,7 @@ namespace DotNetUtilities
     /// </summary>
     public static class FileSystemUtilities
     {
+        #region Utilities
         /// <summary>
         /// Checks if specified file system entry exists and is a directory.
         /// If either of above cases would not be fulfilled, according exception will be thrown.
@@ -331,5 +332,6 @@ namespace DotNetUtilities
 
             ValidateFile(path, validExtensions, shallExist);
         }
+        #endregion
     }
 }

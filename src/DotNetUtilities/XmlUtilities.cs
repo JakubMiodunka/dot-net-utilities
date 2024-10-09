@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Xml;
 using System.Xml.Linq;
 using System.Xml.Schema;
 
@@ -10,22 +13,24 @@ namespace DotNetUtilities
     /// </summary>
     public static class XmlUtilities
     {
+        #region Auxiliary methods
         /// <summary>
-        /// Checks if given XML document matches specified schema.
+        /// Validates given XML document against provided schema.
         /// </summary>
         /// <param name="xmlDocument">
         /// XML document, which shall be validated.
         /// </param>
-        /// <param name="schemaPath">
-        /// Path to *.xsd schema, against which provided XML document shall be validated against.
+        /// <param name="xmlSchema">
+        /// XML schema, against which provided XML document shall be validated against.
         /// </param>
-        /// <returns>
-        /// True if provided XML document matches provided *.xsd schema, false otherwise.
-        /// </returns>
+        /// <param name="eventHandler">
+        /// Callback invoked, when validation error will be detected.
+        /// If null will be provided, first detection of validation error would result in exception throw.
+        /// </param>
         /// <exception cref="ArgumentNullException">
         /// Thrown, when at least one reference-type argument is a null reference.
         /// </exception>
-        public static bool IsMatchingToSchema(XDocument xmlDocument, string schemaPath)
+        private static void PerformXmlValidation(XDocument xmlDocument, XmlSchema xmlSchema, ValidationEventHandler eventHandler)
         {
             #region Arguments validation
             if (xmlDocument is null)
@@ -34,84 +39,135 @@ namespace DotNetUtilities
                 const string ErrorMessage = "Provided XML document is a null reference:";
                 throw new ArgumentNullException(argumentName, ErrorMessage);
             }
-            #endregion
 
-            FileSystemUtilities.ValidateFile(schemaPath, ".xsd");
+            if (xmlSchema is null)
+            {
+                string argumentName = nameof(xmlSchema);
+                const string ErrorMessage = "Provided XML schema is a null reference:";
+                throw new ArgumentNullException(argumentName, ErrorMessage);
+            }
+            #endregion
 
             var schemaSet = new XmlSchemaSet();
-            schemaSet.Add(null, schemaPath);
+            schemaSet.Add(xmlSchema);
 
-            bool isDocumentValid = true;
-            xmlDocument.Validate(schemaSet, (sender, eventData) => isDocumentValid = false);
-
-            return isDocumentValid;
+            xmlDocument.Validate(schemaSet, eventHandler);
         }
+        #endregion
 
+        #region Utilities
         /// <summary>
-        /// Checks if given XML file matches specified schema.
+        /// Loads XML schema stored under specified path into object instance.
         /// </summary>
-        /// <param name="filePath">
-        /// Path to *.xml file, which shall be validated.
-        /// </param>
         /// <param name="schemaPath">
-        /// Path to *.xsd schema, against which provided XML file shall be validated against.
+        /// Path to *.xsd schema, which shall be loaded to memory as object instance.
         /// </param>
         /// <returns>
-        /// True if provided XML file matches provided *.xsd schema, false otherwise.
+        /// Object corresponding to specified *.xsd file.
         /// </returns>
-        public static bool IsMatchingToSchema(string filePath, string schemaPath)
+        /// <exception cref="ArgumentException">
+        /// Thrown, when at least one argument will be considered as invalid.
+        /// </exception>
+        public static XmlSchema LoadXmlSchema(string schemaPath)
         {
             #region Arguments validation
-            FileSystemUtilities.ValidateFile(filePath, ".xml");
+            FileSystemUtilities.ValidateFile(schemaPath, ".xsd");
             #endregion
 
-            var xmlDocument = XDocument.Load(filePath);
-
-            return IsMatchingToSchema(xmlDocument, schemaPath);
+            using (var schemaReader = XmlReader.Create(schemaPath))
+            {
+                try
+                {
+                    return XmlSchema.Read(schemaReader, null);
+                }
+                catch (XmlSchemaException exception)
+                {
+                    string argumentName = nameof(schemaPath);
+                    string errorMessage = $"Provided XML schema is invalid: {schemaPath}";
+                    throw new ArgumentException(errorMessage, argumentName, exception);
+                }
+            }
         }
 
         /// <summary>
-        /// Checks if given XML document matches specified schema.
+        /// Checks if given XML document matches provided schema.
+        /// </summary>
+        /// <param name="xmlDocument">
+        /// XML document, which shall be validated.
+        /// </param>
+        /// <param name="xmlSchema">
+        /// XML schema, against which provided XML document shall be validated against.
+        /// </param>
+        /// <returns>
+        /// True if provided XML document matches provided *.xsd schema, false otherwise.
+        /// </returns>
+        public static bool IsMatchingToSchema(XDocument xmlDocument, XmlSchema xmlSchema)
+        {
+            bool isDocumentMatching = true;
+
+            ValidationEventHandler eventHandler = (sender, eventData) => isDocumentMatching = false;
+            PerformXmlValidation(xmlDocument, xmlSchema, eventHandler);
+
+            return isDocumentMatching;
+        }
+
+        /// <summary>
+        /// Checks if given XML document matches provided schema.
         /// If validation will fail, according exception will be thrown.
         /// </summary>
         /// <param name="xmlDocument">
         /// XML document, which shall be validated.
         /// </param>
-        /// <param name="schemataPath">
-        /// Path to *.xsd schema, against which provided XML document shall be validated against.
+        /// <param name="xmlSchema">
+        /// XML schema, against which provided XML document shall be validated against.
         /// </param>
         /// <exception cref="FormatException">
-        /// Thrown, when provided XML document does not match specified schema.
+        /// Thrown, when given XML document does not match provided schema.
         /// </exception>
-        public static void ValidateXmlDocument(XDocument xmlDocument, string schemataPath)
+        public static void ValidateXmlDocument(XDocument xmlDocument, XmlSchema xmlSchema)
         {
-            if (!IsMatchingToSchema(xmlDocument, schemataPath))
+            if (!IsMatchingToSchema(xmlDocument, xmlSchema))
             {
-                const string ErrorMessage = "XML document does not match the schema:";
-                throw new FormatException(ErrorMessage);
+                string errorMessage = $"XML document does not match the schema: {xmlSchema.SourceUri}";
+                throw new FormatException(errorMessage);
             }
         }
 
         /// <summary>
-        /// Checks if given XML file matches specified schema.
-        /// If validation will fail, according exception will be thrown.
+        /// Generates XML-based report from given XML document validation against provided schema.
         /// </summary>
-        /// <param name="filePath">
-        /// Path to *.xml file, which shall be validated.
+        /// <param name="xmlDocument">
+        /// XML document, which shall be validated.
+        /// <param name="xmlSchema">
+        /// XML schema, against which provided XML document shall be validated against.
         /// </param>
-        /// <param name="schemaPath">
-        /// Path to *.xsd schema, against which provided XML file shall be validated against.
-        /// </param>
-        /// <exception cref="FormatException">
-        /// Thrown, when provided XML file does not match specified schema.
-        /// </exception>
-        public static void ValidateXmlFile(string filePath, string schemaPath)
+        /// <returns>
+        /// XML element containing generated report.
+        /// </returns>
+        public static XElement GenerateValidationReport(XDocument xmlDocument, XmlSchema xmlSchema)
         {
-            if (!IsMatchingToSchema(filePath, schemaPath))
+            var deviations = new List<XElement>();
+
+            void EventHandler(object sender, ValidationEventArgs eventArgs)
             {
-                string errorMessage = $"XML file doesn't match the schema: {filePath}";
-                throw new FormatException(errorMessage);
+                var deviationElement = new XElement("Deviation",
+                    new XAttribute("Index", deviations.Count() + 1),
+                    new XAttribute("LineNumber", eventArgs.Exception.LineNumber),
+                    new XAttribute("LinePosition", eventArgs.Exception.LinePosition),
+                    new XAttribute("Message", eventArgs.Message));
+
+                deviations.Add(deviationElement);
             }
+
+            PerformXmlValidation(xmlDocument, xmlSchema, EventHandler);
+
+            var deviationsElement = new XElement("Deviations",
+                new XAttribute("Quantity", deviations.Count()));
+
+            deviations.ForEach(deviationsElement.Add);
+
+            return deviationsElement;
         }
+       #endregion
     }
 }

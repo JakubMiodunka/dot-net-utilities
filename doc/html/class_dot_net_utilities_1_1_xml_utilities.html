@@ -100,24 +100,24 @@ $(function(){ initResizable(false); });
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:a90e2d19de8889d8e315ea1720f8733b7" id="r_a90e2d19de8889d8e315ea1720f8733b7"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a90e2d19de8889d8e315ea1720f8733b7">IsMatchingToSchema</a> (XDocument xmlDocument, string schemaPath)</td></tr>
-<tr class="memdesc:a90e2d19de8889d8e315ea1720f8733b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if given XML document matches specified schema.  <br /></td></tr>
-<tr class="separator:a90e2d19de8889d8e315ea1720f8733b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a104a139a118eeacbae86b38b72cc1dc4" id="r_a104a139a118eeacbae86b38b72cc1dc4"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a104a139a118eeacbae86b38b72cc1dc4">IsMatchingToSchema</a> (string filePath, string schemaPath)</td></tr>
-<tr class="memdesc:a104a139a118eeacbae86b38b72cc1dc4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if given XML file matches specified schema.  <br /></td></tr>
-<tr class="separator:a104a139a118eeacbae86b38b72cc1dc4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5d46840c469401e00399d15b86105268" id="r_a5d46840c469401e00399d15b86105268"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5d46840c469401e00399d15b86105268">ValidateXmlDocument</a> (XDocument xmlDocument, string schemataPath)</td></tr>
-<tr class="memdesc:a5d46840c469401e00399d15b86105268"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if given XML document matches specified schema. If validation will fail, according exception will be thrown.  <br /></td></tr>
-<tr class="separator:a5d46840c469401e00399d15b86105268"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa18b87405e51f8ee36255d0f5637b86c" id="r_aa18b87405e51f8ee36255d0f5637b86c"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa18b87405e51f8ee36255d0f5637b86c">ValidateXmlFile</a> (string filePath, string schemaPath)</td></tr>
-<tr class="memdesc:aa18b87405e51f8ee36255d0f5637b86c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if given XML file matches specified schema. If validation will fail, according exception will be thrown.  <br /></td></tr>
-<tr class="separator:aa18b87405e51f8ee36255d0f5637b86c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aed27b63ecbdf11c5c83156a62be39a4c" id="r_aed27b63ecbdf11c5c83156a62be39a4c"><td class="memItemLeft" align="right" valign="top">static XmlSchema&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aed27b63ecbdf11c5c83156a62be39a4c">LoadXmlSchema</a> (string schemaPath)</td></tr>
+<tr class="memdesc:aed27b63ecbdf11c5c83156a62be39a4c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Loads XML schema stored under specified path into object instance.  <br /></td></tr>
+<tr class="separator:aed27b63ecbdf11c5c83156a62be39a4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a42e0f8c2d01e50f33b45e091a737cbce" id="r_a42e0f8c2d01e50f33b45e091a737cbce"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a42e0f8c2d01e50f33b45e091a737cbce">IsMatchingToSchema</a> (XDocument xmlDocument, XmlSchema xmlSchema)</td></tr>
+<tr class="memdesc:a42e0f8c2d01e50f33b45e091a737cbce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if given XML document matches provided schema.  <br /></td></tr>
+<tr class="separator:a42e0f8c2d01e50f33b45e091a737cbce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acb89a2592ac9b0c7e519898c43685174" id="r_acb89a2592ac9b0c7e519898c43685174"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acb89a2592ac9b0c7e519898c43685174">ValidateXmlDocument</a> (XDocument xmlDocument, XmlSchema xmlSchema)</td></tr>
+<tr class="memdesc:acb89a2592ac9b0c7e519898c43685174"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if given XML document matches provided schema. If validation will fail, according exception will be thrown.  <br /></td></tr>
+<tr class="separator:acb89a2592ac9b0c7e519898c43685174"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a94e0bbd642b3536a0d634e2ebd323328" id="r_a94e0bbd642b3536a0d634e2ebd323328"><td class="memItemLeft" align="right" valign="top">static XElement&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a94e0bbd642b3536a0d634e2ebd323328">GenerateValidationReport</a> (XDocument xmlDocument, XmlSchema xmlSchema)</td></tr>
+<tr class="memdesc:a94e0bbd642b3536a0d634e2ebd323328"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates XML-based report from given XML document validation against provided schema.  <br /></td></tr>
+<tr class="separator:a94e0bbd642b3536a0d634e2ebd323328"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Set of utilities related to XML format. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="a104a139a118eeacbae86b38b72cc1dc4" name="a104a139a118eeacbae86b38b72cc1dc4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a104a139a118eeacbae86b38b72cc1dc4">&#9670;&#160;</a></span>IsMatchingToSchema() <span class="overload">[1/2]</span></h2>
+<a id="a94e0bbd642b3536a0d634e2ebd323328" name="a94e0bbd642b3536a0d634e2ebd323328"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a94e0bbd642b3536a0d634e2ebd323328">&#9670;&#160;</a></span>GenerateValidationReport()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -126,14 +126,14 @@ Static Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static bool DotNetUtilities.XmlUtilities.IsMatchingToSchema </td>
+          <td class="memname">static XElement DotNetUtilities.XmlUtilities.GenerateValidationReport </td>
           <td>(</td>
-          <td class="paramtype">string</td>          <td class="paramname"><span class="paramname"><em>filePath</em></span>, </td>
+          <td class="paramtype">XDocument</td>          <td class="paramname"><span class="paramname"><em>xmlDocument</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">string</td>          <td class="paramname"><span class="paramname"><em>schemaPath</em></span>&#160;)</td>
+          <td class="paramtype">XmlSchema</td>          <td class="paramname"><span class="paramname"><em>xmlSchema</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -143,20 +143,25 @@ Static Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Checks if given XML file matches specified schema. </p>
+<p>Generates XML-based report from given XML document validation against provided schema. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">filePath</td><td>Path to *.xml file, which shall be validated. </td></tr>
-    <tr><td class="paramname">schemaPath</td><td>Path to *.xsd schema, against which provided XML file shall be validated against. </td></tr>
+    <tr><td class="paramname">xmlDocument</td><td>XML document, which shall be validated. <dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">xmlSchema</td><td>XML schema, against which provided XML document shall be validated against. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>True if provided XML file matches provided *.xsd schema, false otherwise. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>XML element containing generated report. </dd></dl>
+</td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
-<a id="a90e2d19de8889d8e315ea1720f8733b7" name="a90e2d19de8889d8e315ea1720f8733b7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a90e2d19de8889d8e315ea1720f8733b7">&#9670;&#160;</a></span>IsMatchingToSchema() <span class="overload">[2/2]</span></h2>
+<a id="a42e0f8c2d01e50f33b45e091a737cbce" name="a42e0f8c2d01e50f33b45e091a737cbce"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a42e0f8c2d01e50f33b45e091a737cbce">&#9670;&#160;</a></span>IsMatchingToSchema()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -172,7 +177,7 @@ Static Public Member Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">string</td>          <td class="paramname"><span class="paramname"><em>schemaPath</em></span>&#160;)</td>
+          <td class="paramtype">XmlSchema</td>          <td class="paramname"><span class="paramname"><em>xmlSchema</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -182,26 +187,60 @@ Static Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Checks if given XML document matches specified schema. </p>
+<p>Checks if given XML document matches provided schema. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">xmlDocument</td><td>XML document, which shall be validated. </td></tr>
-    <tr><td class="paramname">schemaPath</td><td>Path to *.xsd schema, against which provided XML document shall be validated against. </td></tr>
+    <tr><td class="paramname">xmlSchema</td><td>XML schema, against which provided XML document shall be validated against. </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>True if provided XML document matches provided *.xsd schema, false otherwise. </dd></dl>
+
+</div>
+</div>
+<a id="aed27b63ecbdf11c5c83156a62be39a4c" name="aed27b63ecbdf11c5c83156a62be39a4c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aed27b63ecbdf11c5c83156a62be39a4c">&#9670;&#160;</a></span>LoadXmlSchema()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static XmlSchema DotNetUtilities.XmlUtilities.LoadXmlSchema </td>
+          <td>(</td>
+          <td class="paramtype">string</td>          <td class="paramname"><span class="paramname"><em>schemaPath</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Loads XML schema stored under specified path into object instance. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">schemaPath</td><td>Path to *.xsd schema, which shall be loaded to memory as object instance. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Object corresponding to specified *.xsd file. </dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname">ArgumentNullException</td><td>Thrown, when at least one reference-type argument is a null reference. </td></tr>
+    <tr><td class="paramname">ArgumentException</td><td>Thrown, when at least one argument will be considered as invalid. </td></tr>
   </table>
   </dd>
 </dl>
 
 </div>
 </div>
-<a id="a5d46840c469401e00399d15b86105268" name="a5d46840c469401e00399d15b86105268"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5d46840c469401e00399d15b86105268">&#9670;&#160;</a></span>ValidateXmlDocument()</h2>
+<a id="acb89a2592ac9b0c7e519898c43685174" name="acb89a2592ac9b0c7e519898c43685174"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acb89a2592ac9b0c7e519898c43685174">&#9670;&#160;</a></span>ValidateXmlDocument()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -217,7 +256,7 @@ Static Public Member Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">string</td>          <td class="paramname"><span class="paramname"><em>schemataPath</em></span>&#160;)</td>
+          <td class="paramtype">XmlSchema</td>          <td class="paramname"><span class="paramname"><em>xmlSchema</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -227,61 +266,17 @@ Static Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Checks if given XML document matches specified schema. If validation will fail, according exception will be thrown. </p>
+<p>Checks if given XML document matches provided schema. If validation will fail, according exception will be thrown. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">xmlDocument</td><td>XML document, which shall be validated. </td></tr>
-    <tr><td class="paramname">schemataPath</td><td>Path to *.xsd schema, against which provided XML document shall be validated against. </td></tr>
+    <tr><td class="paramname">xmlSchema</td><td>XML schema, against which provided XML document shall be validated against. </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname">FormatException</td><td>Thrown, when provided XML document does not match specified schema. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="aa18b87405e51f8ee36255d0f5637b86c" name="aa18b87405e51f8ee36255d0f5637b86c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa18b87405e51f8ee36255d0f5637b86c">&#9670;&#160;</a></span>ValidateXmlFile()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">static void DotNetUtilities.XmlUtilities.ValidateXmlFile </td>
-          <td>(</td>
-          <td class="paramtype">string</td>          <td class="paramname"><span class="paramname"><em>filePath</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">string</td>          <td class="paramname"><span class="paramname"><em>schemaPath</em></span>&#160;)</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Checks if given XML file matches specified schema. If validation will fail, according exception will be thrown. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">filePath</td><td>Path to *.xml file, which shall be validated. </td></tr>
-    <tr><td class="paramname">schemaPath</td><td>Path to *.xsd schema, against which provided XML file shall be validated against. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="exception"><dt>Exceptions</dt><dd>
-  <table class="exception">
-    <tr><td class="paramname">FormatException</td><td>Thrown, when provided XML file does not match specified schema. </td></tr>
+    <tr><td class="paramname">FormatException</td><td>Thrown, when given XML document does not match provided schema. </td></tr>
   </table>
   </dd>
 </dl>

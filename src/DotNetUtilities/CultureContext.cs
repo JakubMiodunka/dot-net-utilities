@@ -27,7 +27,7 @@ namespace DotNetUtilities
     /// </code>
     /// </example>
 
-    public sealed class CultureContext : IDisposable
+    public class CultureContext : IDisposable
     {
         #region Properties
         public readonly CultureInfo OriginalCulture;
